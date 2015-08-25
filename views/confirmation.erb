@@ -1,0 +1,15 @@
+<h1>Your order has been placed. Owls will drop off your package shortly!</h1>
+<div>
+  Order Number: <%= @purchase.id %>
+  <br>
+  Name: <%= @purchase.customer_name %>
+  <br>
+  Products:
+  <ul> <% @purchase.products.each() do |product| %>
+     <li><%= product.name %> ($<%= product.cost %>)</li>
+     <% end %>
+  </ul>
+  Total: $<%= @purchase.total() %>
+</div>
+
+<a href="/">Home</a>

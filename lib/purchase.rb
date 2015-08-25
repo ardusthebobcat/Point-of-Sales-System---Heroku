@@ -3,7 +3,7 @@ require('pry')
 class Purchase < ActiveRecord::Base
   has_many(:products)
   validates(:customer_name, :presence => true)
-  validates_numericality_of(:total, :greater_than => 0)
+  # validates_numericality_of(:total, :greater_than => 0)
   before_save(:capitalize_customer_name)
   # after_save(:total_costs)
 

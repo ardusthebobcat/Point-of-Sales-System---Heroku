@@ -1,0 +1,26 @@
+<center>
+  <h1>Welcome to Arthur Weasley's Muggle Emporium! :: Manager Page</h1>
+</center>
+<br>
+<% if @products.any?() %>
+  <b><u><h3>Inventory:</h3></u></b>
+  <ul>
+    <% @products.each() do |product| %>
+      <li><a href="/product/<%= product.id() %>"><%= product.name() %></a></li>
+    <% end %>
+  </ul>
+
+<% else %>
+  <p>The Deatheaters have destroyed your inventory!</p>
+<% end %>
+<br>
+<br>
+<form action="/products" method="post">
+  <label for="new_product">Add a new product:</label>
+  <input id="name" name="name" type="text" placeholder="product name">
+  <input id="description" name="description" type="text" placeholder="product description">
+  <input id="cost" name="cost" type="number" step="0.01" min=0 placeholder="product cost">
+  <button type="submit">Add product</button>
+</form>
+<br>
+<a href="/">Back</a>

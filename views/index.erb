@@ -1,0 +1,23 @@
+<center>
+  <h1>Welcome to Arthur Weasley's Muggle Emporium!</h1>
+</center>
+
+<% if @products.any?() %>
+  <h3>Available products:</h3>
+  <form action ="/purchase" method = "post">
+    <% @products.not_purchased().each() do |product| %>
+      <input type="checkbox" name="products[]" value="<%= product.id() %>"> <%= product.name() %> (<%= product.description() %>) <b>$<%= product.cost() %></b></br>
+    <% end %>
+      <label for="customer_name">Your name:</label>
+      <input id="customer_name" name="customer_name" type="text">
+      <button type="submit" class="btn">Purchase!</button>
+  </form>
+
+  <% else %>
+
+  <p>We are very sorry but the Deatheaters have destroyed our inventory. Please check back soon!</p>
+
+  <% end %>
+<br>
+<br>
+<p align="right"><a href="/manager">ONLY ARTHUR WEASLEY CLICKS THIS!</a></p>
