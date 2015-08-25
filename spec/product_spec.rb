@@ -1,7 +1,6 @@
 require('spec_helper')
 
 describe(Product) do
-  #stuff goes here
   describe(".not_purchased") do
     it("returns whether or not the product is marked as 'purchased'") do
       not_purchased_product1 = Product.create({:name => "Bicycle", :description => "A blue bike", :cost => 40.15, :purchased => false})
