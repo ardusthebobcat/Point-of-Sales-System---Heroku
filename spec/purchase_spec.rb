@@ -5,9 +5,15 @@ describe(Purchase) do
     purchase = Purchase.new({:customer_name => ""})
     expect(purchase.save()).to(eq(false))
   end
+
   it("validates that the total is a positive number") do
     purchase = Purchase.new({:total => -1.5})
     expect(purchase.save()).to(eq(false))
+  end
+
+  it("capitalizes the customer name") do
+    purchase = Purchase.create({:customer_name => "jen bell", :total => 1.55})
+    expect(purchase.customer_name()).to(eq("Jen Bell"))
   end
 
   describe("#products") do
