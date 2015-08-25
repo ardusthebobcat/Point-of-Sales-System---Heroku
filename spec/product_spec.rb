@@ -5,13 +5,25 @@ describe(Product) do
     product = Product.new({:name => ""})
     expect(product.save()).to(eq(false))
   end
+
   it("validates presence of description") do
     product = Product.new({:description => ""})
     expect(product.save()).to(eq(false))
   end
+
   it("validates presence of cost") do
     product = Product.new({:cost => nil})
     expect(product.save()).to(eq(false))
+  end
+
+  it("converts the name to lowercase") do
+    product = Product.create({:name => "Gum", :description => "A pack of Bubblicious gum", :cost => 1.55})
+    expect(product.name()).to(eq("gum"))
+  end
+
+  it("converts the description to lowercase") do
+    product = Product.create({:name => "Gum", :description => "A pack of Bubblicious gum", :cost => 1.55})
+    expect(product.description()).to(eq("a pack of bubblicious gum"))
   end
 
   describe(".not_purchased") do
