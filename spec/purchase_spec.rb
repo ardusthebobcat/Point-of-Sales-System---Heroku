@@ -1,6 +1,15 @@
 require('spec_helper')
 
 describe(Purchase) do
+  it("validates presence of customer name") do
+    purchase = Purchase.new({:customer_name => ""})
+    expect(purchase.save()).to(eq(false))
+  end
+  it("validates that the total is a positive number") do
+    purchase = Purchase.new({:total => -1.5})
+    expect(purchase.save()).to(eq(false))
+  end
+
   describe("#products") do
     it("tells which products are in it") do
       test_purchase = Purchase.create({:customer_name => "Jen Bell", :total => 1.55})
