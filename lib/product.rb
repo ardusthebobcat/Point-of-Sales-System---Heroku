@@ -1,3 +1,5 @@
 class Product < ActiveRecord::Base
-  # code goes here
+  scope(:not_purchased, -> do
+    where ({:purchased => false})
+  end)
 end
