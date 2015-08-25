@@ -1,6 +1,19 @@
 require('spec_helper')
 
 describe(Product) do
+  it("validates presence of name") do
+    product = Product.new({:name => ""})
+    expect(product.save()).to(eq(false))
+  end
+  it("validates presence of description") do
+    product = Product.new({:description => ""})
+    expect(product.save()).to(eq(false))
+  end
+  it("validates presence of cost") do
+    product = Product.new({:cost => nil})
+    expect(product.save()).to(eq(false))
+  end
+
   describe(".not_purchased") do
     it("returns whether or not the product is marked as 'purchased'") do
       not_purchased_product1 = Product.create({:name => "Bicycle", :description => "A blue bike", :cost => 40.15, :purchased => false})
