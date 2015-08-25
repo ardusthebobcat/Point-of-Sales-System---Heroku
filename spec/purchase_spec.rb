@@ -1,4 +1,5 @@
 require('spec_helper')
+require('pry')
 
 describe(Purchase) do
   it("validates presence of customer name") do
@@ -15,6 +16,13 @@ describe(Purchase) do
     purchase = Purchase.create({:customer_name => "jen bell", :total => 1.55})
     expect(purchase.customer_name()).to(eq("Jen Bell"))
   end
+
+  # it("totals the costs of the products") do
+  #   purchase = Purchase.create({:customer_name => "jen bell"})
+  #   product1 = Product.create({:name => "Gum", :description => "A pack of Bubblicious gum", :cost => 1.55, :purchase_id => purchase.id()})
+  #   product2 = Product.create({:name => "mattress", :description => "a really nice mattress", :cost => 1867.39, :purchase_id => purchase.id()})
+  #   expect(purchase.total()).to(eq(1868.94))
+  # end
 
   describe("#products") do
     it("tells which products are in it") do
